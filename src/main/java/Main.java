@@ -55,7 +55,7 @@ public class Main {
             }
             sb.append('\'');
         }
-        out.println("(A + C) = B -> ?p(A + p) = B"
+        out.println("(A + 0C) = B -> ?p(A + p) = B"
                 .replace("A", astr)
                 .replace("B", bstr)
                 .replace("C", sb));
@@ -70,9 +70,9 @@ public class Main {
         out.println("|- !(?p(A + p = B))"
                 .replace("A", astr)
                 .replace("B", bstr));
-        for (String str : start) {
-            out.println(str);
-        }
+//        for (String str : start) {
+//            out.println(str);
+//        }
         for (String str : start2) {
             out.println(str);
         }
@@ -87,6 +87,8 @@ public class Main {
 
     public static void main(String[] args) {
         Main m;
+        String[] args2 = {"out.txt"};
+        args = args2;
         if (args.length >= 1) {
             try {
                 m = new Main(new PrintStream(Files.newOutputStream(Paths.get(args[0]))));
@@ -101,7 +103,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         a = sc.nextInt();
         b = sc.nextInt();
-        if (a < b) {
+        if (a <= b) {
             m.proveLess(a, b);
         } else {
             m.proveNotLess(a, b);
